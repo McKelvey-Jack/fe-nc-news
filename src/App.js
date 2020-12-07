@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Articleslist from './components/ArticlesList';
+import Nav from './components/Nav';
+import { Router } from '@reach/router';
+import TopArticles from './components/TopArticles';
+import Article from './components/Article';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <Nav />
       </header>
+      <div className={'main-page'}>
+        <Router className={'article-container'} primary={false}>
+          <Articleslist path="/" />
+          <Articleslist path="/:topic" />
+          <Article path="/articles/:article_id" />
+          <Article path="/:topic/articles/:article_id" />
+        </Router>
+        <TopArticles />
+      </div>
     </div>
   );
 }
