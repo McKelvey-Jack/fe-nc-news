@@ -13,7 +13,7 @@ export default class TopArticles extends Component {
       <div className={'top-articles'}>
         {this.state.topArticles.map((article) => {
           return (
-            <div>
+            <div key={article.article_id}>
               <h4>{article.title}</h4>
               <p>{article.votes}</p>
             </div>

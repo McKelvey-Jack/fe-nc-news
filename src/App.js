@@ -4,19 +4,19 @@ import Nav from './components/Nav';
 import { Router } from '@reach/router';
 import TopArticles from './components/TopArticles';
 import Article from './components/Article';
+import ErrorMessage from './components/ErrorMessage';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <Nav />
-      </header>
+      <Nav />
       <div className={'main-page'}>
         <Router className={'article-container'} primary={false}>
           <Articleslist path="/" />
           <Articleslist path="/:topic" />
           <Article path="/articles/:article_id" />
           <Article path="/:topic/articles/:article_id" />
+          <ErrorMessage default errorMessage="Page not found :(" />
         </Router>
         <TopArticles />
       </div>

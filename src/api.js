@@ -38,3 +38,28 @@ export const getTopArticles = () => {
       return TopArticles;
     });
 };
+
+export const getArticleById = (id) => {
+  return axios
+    .get(`https://jackmck-nc-news.herokuapp.com/api/articles/${id}`)
+    .then(({ data }) => {
+      return data.article;
+    });
+};
+
+export const getArticleComments = (id) => {
+  return axios
+    .get(`https://jackmck-nc-news.herokuapp.com/api/articles/${id}/comments`)
+    .then(({ data }) => {
+      return data.comments;
+    });
+};
+
+export const changeVoteCount = (id, valueToChangeBy) => {
+  return axios.patch(
+    `https://jackmck-nc-news.herokuapp.com/api/comments/${id}`,
+    {
+      inc_votes: valueToChangeBy,
+    }
+  );
+};

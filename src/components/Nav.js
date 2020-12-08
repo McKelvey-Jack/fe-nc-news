@@ -13,18 +13,20 @@ export default class Nav extends Component {
 
   render() {
     return (
-      <nav>
-        <Link to="/">
-          <button>LOGO</button>
-        </Link>
-        {this.state.topics.map((topic) => {
-          return (
-            <Link key={topic.slug} to={topic.slug}>
-              {topic.slug}
-            </Link>
-          );
-        })}
-      </nav>
+      <header>
+        <nav>
+          <Link to="/">
+            <button>LOGO</button>
+          </Link>
+          {this.state.topics.map((topic) => {
+            return (
+              <Link key={topic.slug} to={topic.slug}>
+                {topic.slug}
+              </Link>
+            );
+          })}
+        </nav>
+      </header>
     );
   }
 }
