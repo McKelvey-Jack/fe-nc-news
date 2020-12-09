@@ -20,7 +20,7 @@ export default class Nav extends Component {
           </Link>
           {this.state.topics.map((topic) => {
             return (
-              <Link key={topic.slug} to={topic.slug}>
+              <Link key={topic.slug} to={`articles/${topic.slug}`}>
                 {topic.slug}
               </Link>
             );

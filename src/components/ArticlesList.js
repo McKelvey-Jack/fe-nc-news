@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api';
 import { Link } from '@reach/router';
 import Loading from './Loading';
+import ArticlesVotes from './ArticlesVotes';
 
 export default class Articleslist extends Component {
   state = {
@@ -9,19 +10,28 @@ export default class Articleslist extends Component {
     timeOrder: null,
     voteCountOrder: null,
     isLoading: true,
+    isError: false,
   };
 
   componentDidMount() {
-    api.getArticles().then((articles) => {
-      this.setState({ articles, isLoading: false });
-    });
+    api
+      .getArticles()
+      .then((articles) => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch((err) => {});
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.topic !== this.props.topic) {
-      api.getArticles(this.props.topic).then((articles) => {
-        this.setState({ articles });
-      });
+      api
+        .getArticles(this.props.topic)
+        .then((articles) => {
+          this.setState({ articles });
+        })
+        .catch((err) => {
+          console.log('here');
+        });
     }
   }
 
@@ -43,6 +53,10 @@ export default class Articleslist extends Component {
     } else {
       return (
         <section className={'articles-list'}>
+          <h2>{this.props.topic} Articles</h2>
+          <Link to={`/articles/${this.props.topic}/newArticle`}>
+            <button>Post an article about {this.props.topic}</button>
+          </Link>
           <div>
             <button
               onClick={() => {
@@ -73,11 +87,11 @@ export default class Articleslist extends Component {
               Votes lowest
             </button>
           </div>
-          {this.state.articles.map((article) => {
+          {this.state.articles.map((article, index) => {
             return (
               <div key={article.article_id} className={'article-list-item'}>
                 {
-                  <Link to={`articles/${article.article_id}`}>
+                  <Link to={`${article.article_id}`}>
                     <h2>{article.title}</h2>
                   </Link>
                 }
@@ -87,7 +101,12 @@ export default class Articleslist extends Component {
                   <p>Topic: {article.topic}</p>
                   <p>Author: {article.author}</p>
                   <p> created-at: {article.created_at}</p>
-                  <p>Votes: {article.votes}</p>
+                  <div>
+                    <ArticlesVotes
+                      article_id={article.article_id}
+                      voteCount={article.votes}
+                    />
+                  </div>
                 </div>
               </div>
             );

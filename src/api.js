@@ -10,7 +10,7 @@ export const getTopics = () => {
 
 export const getArticles = (topic, sort_by, order) => {
   return axios
-    .get('https://jackmck-nc-news.herokuapp.com/api/articles', {
+    .get(`https://jackmck-nc-news.herokuapp.com/api/articles`, {
       params: {
         topic,
         sort_by: sort_by,
@@ -27,7 +27,7 @@ export const getTopArticles = () => {
     .get('https://jackmck-nc-news.herokuapp.com/api/articles', {
       params: {
         sort_by: 'votes',
-        order: 'asc',
+        order: 'desc',
       },
     })
     .then(({ data }) => {
@@ -55,11 +55,52 @@ export const getArticleComments = (id) => {
     });
 };
 
-export const changeVoteCount = (id, valueToChangeBy) => {
+export const changeCommentVoteCount = (id, valueToChangeBy) => {
+  console.log(id, valueToChangeBy);
   return axios.patch(
     `https://jackmck-nc-news.herokuapp.com/api/comments/${id}`,
     {
       inc_votes: valueToChangeBy,
     }
+  );
+};
+
+export const changeArticleVoteCount = (id, valueToChangeBy) => {
+  return axios.patch(
+    `https://jackmck-nc-news.herokuapp.com/api/articles/${id}`,
+    {
+      inc_votes: valueToChangeBy,
+    }
+  );
+};
+
+export const postNewComment = (id, commentData) => {
+  return axios
+    .post(
+      `https://jackmck-nc-news.herokuapp.com/api/articles/${id}/comments`,
+      commentData
+    )
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
+
+export const deleteComment = (id) => {
+  return axios.delete(
+    `https://jackmck-nc-news.herokuapp.com/api/comments/${id}`
+  );
+};
+
+export const addArticle = (articleData) => {
+  return axios
+    .post('https://jackmck-nc-news.herokuapp.com/api/articles', articleData)
+    .then(({ data }) => {
+      return data.article;
+    });
+};
+
+export const deleteArticle = (id) => {
+  return axios.delete(
+    `https://jackmck-nc-news.herokuapp.com/api/articles/${id}`
   );
 };
