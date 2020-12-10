@@ -1,39 +1,176 @@
 .App {
   text-align: center;
-  background-color: whitesmoke;
+  background-color: #f0f0c9;
 }
+body {
+  background-color: #f0f0c9;
+}
+
+/* nav */
+
+nav {
+  border-bottom: 1px solid black;
+}
+
+nav button {
+  font-size: 1em;
+}
+
+@media screen and (max-width: 400px) {
+}
+
+.logo {
+  float: left;
+  margin: 0.2em 0.5em;
+  background: none;
+  border: none;
+}
+
+.back-button {
+  margin: 0.2em 0.5em;
+  background: red;
+  background: none;
+  border: none;
+}
+
+.topic-button {
+  margin: 0.2em;
+  border: none;
+  border-radius: 4px;
+}
+
+.user-button {
+  float: left;
+  margin-top: 0.1em;
+  background: none;
+  border: none;
+}
+
 .main-page {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0c9;
 }
 
 .article-router {
-  margin: 1em 1em 1em 3em;
-  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em 1em 1em 1em;
+  width: 90%;
+}
+
+@media screen and (min-width: 500px) {
+  .article-router {
+    width: 100%;
+    background-color: #f0f0c9;
+  }
 }
 
 .articles-list {
   font-size: 0.5em;
+  width: 100%;
 }
 
 .article-list-item {
   border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
   margin-top: 1em;
   margin-bottom: 1em;
+  background-color: #a1cdf1;
+  font-size: 1.3em;
+}
+
+.sort-button {
+  margin: 0.2em;
+  border-radius: 4px;
+  background-color: #bbd1e2;
+}
+.sort-button:focus {
+  outline: none;
+}
+
+.post-article-button {
+  background-color: #548c8f;
+  margin: 1em 1em 3em 1em;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+@media screen and (min-width: 500px) {
+  .article-list-item {
+    width: 85%;
+    font-size: 1.5em;
+  }
 }
 
 .top-articles {
   border: 1px solid black;
   margin-top: 2em;
+  margin-right: 0.5em;
   font-size: 0.5em;
   height: 50%;
   width: 30%;
+  margin-bottom: auto;
+}
+
+@media screen and (max-width: 500px) {
+  .top-articles {
+    display: none;
+  }
+}
+
+.articles-list h1 {
+  text-transform: capitalize;
+  font-size: 2.5em;
+}
+
+.article-title-link {
+  text-decoration: none;
+  outline: none;
+  color: black;
+}
+
+.article-title-link:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.votes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.votes button {
+  background: none;
+  border: none;
+  font-size: 2.5em;
+}
+.votes button:hover {
+  background-color: rgb(219, 222, 224);
+  border-radius: 50%;
+}
+
+.votes button:focus {
+  background: none;
+  outline: none;
+}
+.votes p {
+  margin: 1em;
+}
+
+.article-date {
+  text-align: left;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 .article-container {
-  margin: 1em 1em 1em 3em;
-  width: 70%;
+  margin: 1em 1em 1em 1em;
+  width: 89%;
   font-size: 0.8em;
 }
 
@@ -43,4 +180,111 @@
   border-radius: 4px;
   margin-top: 1em;
   margin-bottom: 1em;
+}
+
+.new-comment-form {
+  margin: 1em 0em;
+  display: flex;
+  flex-direction: column;
+}
+.new-comment-form label {
+  text-align: left;
+  font-style: italic;
+  font-size: 0.6rem;
+}
+
+.new-comment-form button {
+  background: none;
+  margin: 1em 0em;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+.new-comment-form button:hover {
+  background-color: #548c8f;
+  margin: 1em;
+  border-radius: 4px;
+}
+
+.comment-input {
+  height: 3rem;
+  background: none;
+  resize: none;
+}
+
+.comments-container {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #a1cdf1;
+}
+
+.comment-date {
+  font-style: italic;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+}
+
+.user-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.avatar-container {
+  height: 10em;
+  width: 10em;
+  border-radius: 50%;
+}
+
+.avatar-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.user-details-container {
+  width: 100%;
+  display: flex;
+  padding-bottom: 1em;
+  border-bottom: 1px dotted black;
+}
+
+.username-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em;
+}
+
+.new-article-section {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.new-article-form {
+  background-color: #548c8f;
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  font-size: 0.6rem;
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.article-form-input:focus {
+  outline: none;
+}
+
+.after-delete-return-button {
+  background-color: #548c8f;
+  margin: 1em 1em 3em 1em;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.loading {
+  background-color: #f0f0c9;
 }

@@ -25,11 +25,12 @@ export default class AddArticle extends Component {
   };
   render() {
     return (
-      <div>
+      <section className={'new-article-section'}>
         <h2>Add a new Article about {this.props.topic}</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form className={'new-article-form'} onSubmit={this.handleSubmit}>
           <label>Title: </label>
           <input
+            className={'article-form-input'}
             type="text"
             name="title"
             required={true}
@@ -40,7 +41,8 @@ export default class AddArticle extends Component {
             value={this.state.title}
           ></input>
           <label>body</label>
-          <input
+          <textarea
+            className={'article-form-input'}
             type="text"
             name="body"
             required={true}
@@ -49,10 +51,11 @@ export default class AddArticle extends Component {
               this.handleChange(event);
             }}
             value={this.state.body}
-          ></input>
+          ></textarea>
+
           <button type="submit">Post Article</button>
         </form>
-      </div>
+      </section>
     );
   }
 }

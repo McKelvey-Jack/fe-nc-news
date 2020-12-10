@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import ErrorMessage from './ErrorMessage';
 
 export default class NewComment extends Component {
-  state = { comment: '' };
+  state = { comment: '', isError: false, errorMessage: '' };
 
   handleChange = (event) => {
     this.setState({ comment: event.target.value });
@@ -10,20 +11,39 @@ export default class NewComment extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
+    console.log(this.state.comment);
     const commentData = { username: 'tickle122', body: this.state.comment };
     api
       .postNewComment(this.props.article_id, commentData)
       .then((newComment) => {
         this.props.addComment(newComment);
+        this.setState({ comment: '' });
+      })
+      .catch((err) => {
+        const {
+          response: { data },
+        } = err;
+        const {
+          response: { status },
+        } = err;
+        this.setState({
+          isError: true,
+          isLoading: false,
+          errorMessage: `${status} ${data.msg}`,
+        });
       });
   };
 
   render() {
+    if (this.state.isError) {
+      return <ErrorMessage errorMessage={this.state.errorMessage} />;
+    }
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={'new-comment-form'} onSubmit={this.handleSubmit}>
         <label>Comment as tickle122</label>
-        <input
-          type="text"
+        <textarea
+          className={'comment-input'}
           name="comment"
           required={true}
           placeholder="Type your comment here"
@@ -31,7 +51,8 @@ export default class NewComment extends Component {
             this.handleChange(event);
           }}
           value={this.state.comment}
-        ></input>
+        ></textarea>
+
         <button type="submit">Post Comment</button>
       </form>
     );

@@ -5,6 +5,8 @@ import * as api from '../api';
 import ErrorMessage from './ErrorMessage';
 import ArticlesVotes from './ArticlesVotes';
 import DeleteArticle from './DeleteArticle';
+import { Link } from '@reach/router';
+import { dateFormatter } from '../utils';
 
 export default class Article extends Component {
   state = {
@@ -23,11 +25,9 @@ export default class Article extends Component {
         this.setState({ article, isLoading: false });
       })
       .catch((err) => {
-        console.dir(err);
         const {
           response: { data },
         } = err;
-        console.log(data);
         const {
           response: { status },
         } = err;
@@ -40,22 +40,32 @@ export default class Article extends Component {
   }
 
   showDeletedMessage = () => {
-    console.log('here');
     this.setState({ isDeleted: true });
   };
 
   render() {
     const { article } = this.state;
+    const date = dateFormatter(article.created_at);
 
     if (this.state.isLoading) {
       return <Loading />;
     } else if (this.state.isError) {
       return <ErrorMessage errorMessage={this.state.errorMessage} />;
     } else if (this.state.isDeleted) {
-      return <p>Article has Been Deleted</p>;
+      return (
+        <div>
+          <p>Article has Been Deleted</p>
+          <Link to="/">
+            <button className={'after-delete-return-button'}>
+              Back To All Articles
+            </button>
+          </Link>
+        </div>
+      );
     } else {
       return (
         <div className={'article-container'}>
+          <p className={'article-date'}> {date}</p>
           <h2>{article.title}</h2>
           <p>{article.body}</p>
           <p>Author: {article.author}</p>
@@ -71,7 +81,7 @@ export default class Article extends Component {
               voteCount={article.votes}
             />
           </div>
-          <p>{article.comment_count} comments </p>
+
           <Comments article_id={article.article_id} />
         </div>
       );

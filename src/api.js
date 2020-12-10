@@ -22,6 +22,20 @@ export const getArticles = (topic, sort_by, order) => {
     });
 };
 
+export const getArticlesByUser = (username) => {
+  return axios
+    .get(`https://jackmck-nc-news.herokuapp.com/api/articles`, {
+      params: {
+        author: username,
+        sort_by: 'created_at',
+        order: 'desc',
+      },
+    })
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
+
 export const getTopArticles = () => {
   return axios
     .get('https://jackmck-nc-news.herokuapp.com/api/articles', {
@@ -103,4 +117,12 @@ export const deleteArticle = (id) => {
   return axios.delete(
     `https://jackmck-nc-news.herokuapp.com/api/articles/${id}`
   );
+};
+
+export const getUser = (username) => {
+  return axios
+    .get(`https://jackmck-nc-news.herokuapp.com/api/users/${username}`)
+    .then(({ data }) => {
+      return data.user;
+    });
 };

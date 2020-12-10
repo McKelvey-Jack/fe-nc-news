@@ -4,14 +4,31 @@ import CommentVotes from './CommentVotes';
 import DeleteComment from './DeleteComment';
 import Loading from './Loading';
 import NewComment from './NewComment';
+import { getTimeAGo } from '../utils';
+import ErrorMessage from './ErrorMessage';
 
 export default class Comments extends Component {
-  state = { comments: [], isLoading: true };
+  state = { comments: [], isLoading: true, isError: false, errorMessage: '' };
 
   componentDidMount() {
-    api.getArticleComments(this.props.article_id).then((comments) => {
-      this.setState({ comments, isLoading: false });
-    });
+    api
+      .getArticleComments(this.props.article_id)
+      .then((comments) => {
+        this.setState({ comments, isLoading: false });
+      })
+      .catch((err) => {
+        const {
+          response: { data },
+        } = err;
+        const {
+          response: { status },
+        } = err;
+        this.setState({
+          isError: true,
+          isLoading: false,
+          errorMessage: `${status} ${data.msg}`,
+        });
+      });
   }
 
   addComment = (newComment) => {
@@ -28,7 +45,6 @@ export default class Comments extends Component {
       const UpdatedState = currstate.comments.filter((comment) => {
         return comment.comment_id !== commentToDeleteId;
       });
-      console.log(UpdatedState);
       return { comments: UpdatedState };
     });
   };
@@ -37,6 +53,8 @@ export default class Comments extends Component {
     const { comments } = this.state;
     if (this.state.isLoading) {
       return <Loading />;
+    } else if (this.state.isError) {
+      return <ErrorMessage errorMessage={this.state.errorMessage} />;
     } else {
       return (
         <section>
@@ -44,10 +62,13 @@ export default class Comments extends Component {
             article_id={this.props.article_id}
             addComment={this.addComment}
           />
+          <p>{comments.length} comments</p>
           {comments.map((comment, index) => {
+            const date = getTimeAGo(comment.created_at);
             return (
               <div className={'comments-container'} key={comment.comment_id}>
                 <p>{comment.author} 💬</p>
+                <p className={'comment-date'}>{date}</p>
                 <p>{comment.body}</p>
                 <CommentVotes
                   comment_id={comment.comment_id}

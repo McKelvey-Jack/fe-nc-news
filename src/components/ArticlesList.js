@@ -3,6 +3,8 @@ import * as api from '../api';
 import { Link } from '@reach/router';
 import Loading from './Loading';
 import ArticlesVotes from './ArticlesVotes';
+import { dateFormatter } from '../utils';
+import ErrorMessage from './ErrorMessage';
 
 export default class Articleslist extends Component {
   state = {
@@ -11,15 +13,31 @@ export default class Articleslist extends Component {
     voteCountOrder: null,
     isLoading: true,
     isError: false,
+    errorMessage: '',
   };
 
   componentDidMount() {
     api
-      .getArticles()
+      .getArticles(this.props.user)
       .then((articles) => {
-        this.setState({ articles, isLoading: false });
+        this.setState({
+          articles,
+          isLoading: false,
+        });
       })
-      .catch((err) => {});
+      .catch((err) => {
+        const {
+          response: { data },
+        } = err;
+        const {
+          response: { status },
+        } = err;
+        this.setState({
+          isError: true,
+          isLoading: false,
+          errorMessage: `${status} ${data.msg}`,
+        });
+      });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,7 +48,17 @@ export default class Articleslist extends Component {
           this.setState({ articles });
         })
         .catch((err) => {
-          console.log('here');
+          const {
+            response: { data },
+          } = err;
+          const {
+            response: { status },
+          } = err;
+          this.setState({
+            isError: true,
+            isLoading: false,
+            errorMessage: `${status} ${data.msg}`,
+          });
         });
     }
   }
@@ -50,15 +78,27 @@ export default class Articleslist extends Component {
   render() {
     if (this.state.isLoading) {
       return <Loading />;
+    } else if (this.state.isError) {
+      return <ErrorMessage errorMessage={this.state.errorMessage} />;
     } else {
       return (
         <section className={'articles-list'}>
-          <h2>{this.props.topic} Articles</h2>
-          <Link to={`/articles/${this.props.topic}/newArticle`}>
-            <button>Post an article about {this.props.topic}</button>
-          </Link>
+          {!this.props.topic ? (
+            <h1>All Articles</h1>
+          ) : (
+            <h1> {this.props.topic} Articles</h1>
+          )}
+          {this.props.topic ? (
+            <Link to={`/articles/${this.props.topic}/newArticle`}>
+              <button className={'post-article-button'}>
+                Post an article about {this.props.topic}
+              </button>
+            </Link>
+          ) : null}
+
           <div>
             <button
+              className={'sort-button'}
               onClick={() => {
                 this.sortArticlesByTime('asc');
               }}
@@ -66,6 +106,7 @@ export default class Articleslist extends Component {
               Oldest
             </button>
             <button
+              className={'sort-button'}
               onClick={() => {
                 this.sortArticlesByTime('desc');
               }}
@@ -73,6 +114,7 @@ export default class Articleslist extends Component {
               Newest
             </button>
             <button
+              className={'sort-button'}
               onClick={() => {
                 this.sortArticlesByVotes('desc');
               }}
@@ -80,6 +122,7 @@ export default class Articleslist extends Component {
               Votes higest
             </button>
             <button
+              className={'sort-button'}
               onClick={() => {
                 this.sortArticlesByTime('asc');
               }}
@@ -88,19 +131,25 @@ export default class Articleslist extends Component {
             </button>
           </div>
           {this.state.articles.map((article, index) => {
+            const date = dateFormatter(article.created_at);
             return (
               <div key={article.article_id} className={'article-list-item'}>
+                <p className={'article-date'}>{date}</p>
                 {
-                  <Link to={`${article.article_id}`}>
-                    <h2>{article.title}</h2>
+                  <Link
+                    className={'article-title-link'}
+                    to={`${article.article_id}`}
+                  >
+                    <h2 className={'article-title'}>{article.title}</h2>
                   </Link>
                 }
                 <div>
                   <p>{article.body}</p>
-                  <p>{article.comment_count} comments </p>
-                  <p>Topic: {article.topic}</p>
+
+                  {!this.props.topic ? <p>Topic: {article.topic}</p> : null}
+
                   <p>Author: {article.author}</p>
-                  <p> created-at: {article.created_at}</p>
+
                   <div>
                     <ArticlesVotes
                       article_id={article.article_id}

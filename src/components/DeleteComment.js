@@ -9,6 +9,7 @@ export default function DeleteComment(props) {
 
   return (
     <button
+      className={'delete-button'}
       onClick={() => {
         handleDelete();
       }}

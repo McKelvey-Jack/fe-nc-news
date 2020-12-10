@@ -10,6 +10,7 @@ export default function DeleteArticle(props) {
 
   return (
     <button
+      className={'delete-button'}
       onClick={() => {
         handleDelete();
       }}
