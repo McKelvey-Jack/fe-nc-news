@@ -7,6 +7,11 @@ body {
 
 button:focus {
   outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 nav {
@@ -18,44 +23,17 @@ nav {
 
 .logo {
   border: none;
-  border-radius: 10px;
-  font-size: 2em;
   background: none;
-}
-
-.logo:hover {
-  background: rgb(224, 221, 221);
-  border-radius: 50%;
-  transition-duration: 0.3s;
-}
-
-@media screen and (max-width: 500px) {
-  .logo:hover {
-    background: none;
-  }
-}
-@media screen and (max-width: 500px) {
-  .user-button:hover {
-    background: none;
-  }
+  border-radius: 10px;
+  font-size: 3em;
+  padding: 0;
 }
 
 .user-button {
   background: none;
   border: none;
-  font-size: 2em;
-}
-
-.user-button:hover {
-  background: rgb(224, 221, 221);
-  border-radius: 50%;
-  transition-duration: 0.3s;
-}
-
-@media screen and (max-width: 500px) {
-  .user-button:hover {
-    background: none;
-  }
+  padding: 0;
+  font-size: 3em;
 }
 
 .menu {
@@ -66,7 +44,8 @@ nav {
 }
 
 .menu-button {
-  font-size: 2em;
+  font-size: 3em;
+  padding: 0;
   background: none;
   border: none;
 }
@@ -77,6 +56,13 @@ nav {
 
 .drop-down-content {
   right: 0;
+  font-size: 2em;
+}
+@media screen and (max-width: 500px) {
+  .drop-down-content {
+    right: 0;
+    font-size: 1em;
+  }
 }
 
 .topic-button {
@@ -108,7 +94,7 @@ nav {
   width: 80%;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (max-width: 500px) {
   .article-router {
     width: 100%;
     background-color: #f0f0c9;
@@ -140,9 +126,16 @@ nav {
 }
 
 .sort-button {
+  font-size: 1.5em;
   margin: 0.2em;
   border-radius: 4px;
   background-color: #bbd1e2;
+}
+
+@media screen and (max-width: 500px) {
+  .sort-button {
+    font-size: 1em;
+  }
 }
 
 .post-article-button {
@@ -163,11 +156,9 @@ nav {
 }
 
 .top-articles {
-  margin-top: 5em;
   margin-right: 3em;
-  font-size: 1.3em;
   height: 50%;
-  width: 35%;
+  width: 40%;
   padding: 2em;
   margin-bottom: auto;
   border-radius: 8px;
@@ -175,11 +166,11 @@ nav {
 
 .top-articles h2 {
   text-decoration: underline;
-  font-size: 2em;
+  font-size: 1.7em;
 }
 
 .top-articles h3 {
-  font-size: 1.8em;
+  font-size: 1.7em;
 }
 
 .top-article-item {
@@ -187,7 +178,7 @@ nav {
   border-radius: 4px;
   margin: 0.5em;
   background-color: #a1cdf1;
-  font-size: 1.5em;
+  font-size: 1.6em;
 }
 
 @media screen and (max-width: 500px) {
