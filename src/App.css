@@ -105,7 +105,7 @@ nav {
   justify-content: center;
   align-items: center;
   margin: 1em 1em 1em 1em;
-  width: 90%;
+  width: 80%;
 }
 
 @media screen and (min-width: 500px) {
@@ -116,7 +116,7 @@ nav {
 }
 
 .articles-list {
-  font-size: 0.5em;
+  font-size: 1em;
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -165,9 +165,9 @@ nav {
 .top-articles {
   margin-top: 5em;
   margin-right: 3em;
-  font-size: 0.5em;
+  font-size: 1.3em;
   height: 50%;
-  width: 30%;
+  width: 35%;
   padding: 2em;
   margin-bottom: auto;
   border-radius: 8px;
@@ -175,6 +175,7 @@ nav {
 
 .top-articles h2 {
   text-decoration: underline;
+  font-size: 1.5em;
 }
 
 .top-articles h3 {
