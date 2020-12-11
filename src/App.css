@@ -175,11 +175,11 @@ nav {
 
 .top-articles h2 {
   text-decoration: underline;
-  font-size: 2.5em;
+  font-size: 2em;
 }
 
 .top-articles h3 {
-  font-size: 2.2em;
+  font-size: 1.8em;
 }
 
 .top-article-item {
@@ -187,7 +187,7 @@ nav {
   border-radius: 4px;
   margin: 0.5em;
   background-color: #a1cdf1;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 @media screen and (max-width: 500px) {
