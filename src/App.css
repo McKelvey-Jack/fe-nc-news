@@ -29,6 +29,17 @@ nav {
   transition-duration: 0.3s;
 }
 
+@media screen and (max-width: 500px) {
+  .logo:hover {
+    background: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .user-button:hover {
+    background: none;
+  }
+}
+
 .user-button {
   background: none;
   border: none;
@@ -39,6 +50,12 @@ nav {
   background: rgb(224, 221, 221);
   border-radius: 50%;
   transition-duration: 0.3s;
+}
+
+@media screen and (max-width: 500px) {
+  .user-button:hover {
+    background: none;
+  }
 }
 
 .menu {
@@ -204,15 +221,7 @@ nav {
   border: none;
   font-size: 2.5em;
 }
-.votes button:hover {
-  background-color: rgb(219, 222, 224);
-  border-radius: 50%;
-}
 
-.votes button:focus {
-  background: none;
-  outline: none;
-}
 .votes p {
   margin: 1em;
 }
