@@ -54,7 +54,7 @@ export default class DropdownMenu extends Component {
                   </Link>
                 </div>
               );
-            })}{' '}
+            })}
           </div>
         ) : null}
       </div>
