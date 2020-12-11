@@ -69,15 +69,15 @@ export default class UserHomePage extends Component {
             </div>
             <div className={'username-container'}>
               <h2>{name}</h2>
-              <h2>{username}</h2>
+              <h2 className={'username'}>{username}</h2>
             </div>
           </div>
 
-          <h3>Your Articles</h3>
+          <h3>Your Article Timeline</h3>
           {this.state.articles.map((article) => {
             const formattedDate = dateFormatter(article.created_at);
             return (
-              <div className={'article-list-item'} key={article.article_id}>
+              <div className={'user-article-list-item'} key={article.article_id}>
                 <Link
                   className={'article-title-link'}
                   to={`articles/${article.article_id}`}

@@ -42,11 +42,12 @@ export default class AddArticle extends Component {
           ></input>
           <label>body</label>
           <textarea
+            rows="10"
             className={'article-form-input'}
             type="text"
             name="body"
             required={true}
-            placeholder="Write your article title here"
+            placeholder="Write your article body here"
             onChange={(event) => {
               this.handleChange(event);
             }}
