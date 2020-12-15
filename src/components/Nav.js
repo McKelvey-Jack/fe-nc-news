@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import * as api from '../api';
 import DropdownMenu from './DropdownMenu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUser } from '@fortawesome/free-solid-svg-icons';
 
 export default class Nav extends Component {
   state = { topics: [] };
@@ -18,12 +20,12 @@ export default class Nav extends Component {
         <nav>
           <Link to="/">
             <button className={'logo'}>
-              <span>🏠</span>
+              <FontAwesomeIcon icon={faHome} />
             </button>
           </Link>
           <Link to="users/tickle122">
             <button className={'user-button'}>
-              <span>👤</span>
+              <FontAwesomeIcon icon={faUser} />
             </button>
           </Link>
           <DropdownMenu />

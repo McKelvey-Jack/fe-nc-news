@@ -25,7 +25,7 @@ export default class TopArticles extends Component {
       return (
         <div className={'top-articles'}>
           <h2> {date}</h2>
-          <h3>Most Popular Articles</h3>
+          <h3>Most Popular Articles!</h3>
           {this.state.topArticles.map((article) => {
             return (
               <div className={'top-article-item'} key={article.article_id}>

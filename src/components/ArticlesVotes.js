@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 export default class ArticlesVotes extends Component {
   state = { voteCount: 0, change: 0, hasVotedUp: false, hasVotedDown: false };
@@ -59,7 +61,7 @@ export default class ArticlesVotes extends Component {
             this.incrementVoteCount();
           }}
         >
-          👍
+          <FontAwesomeIcon icon={faThumbsUp} />
         </button>
         <p>{voteCount + change}</p>
         <button
@@ -68,7 +70,7 @@ export default class ArticlesVotes extends Component {
             this.decrementVoteCount();
           }}
         >
-          👎
+          <FontAwesomeIcon icon={faThumbsDown} />
         </button>
       </div>
     );

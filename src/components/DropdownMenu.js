@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as api from '../api';
 import { Link } from '@reach/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDoubleUp, faBars } from '@fortawesome/free-solid-svg-icons';
 
 export default class DropdownMenu extends Component {
   state = { topics: [], showMenu: false };
@@ -36,7 +38,11 @@ export default class DropdownMenu extends Component {
             this.showMenu();
           }}
         >
-          {!this.state.showMenu ? <span>📗🔽</span> : <span>📗⬆️ </span>}
+          {!this.state.showMenu ? (
+            <FontAwesomeIcon icon={faBars} />
+          ) : (
+            <FontAwesomeIcon icon={faAngleDoubleUp} />
+          )}
         </button>
         {this.state.showMenu ? (
           <div className={'menu-container'}>

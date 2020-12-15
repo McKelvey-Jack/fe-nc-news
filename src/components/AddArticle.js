@@ -40,9 +40,9 @@ export default class AddArticle extends Component {
             }}
             value={this.state.title}
           ></input>
-          <label>body</label>
+          <label>body:</label>
           <textarea
-            rows="10"
+            rows="12"
             className={'article-form-input'}
             type="text"
             name="body"
