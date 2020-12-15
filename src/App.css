@@ -25,15 +25,35 @@ nav {
   border: none;
   background: none;
   border-radius: 10px;
-  font-size: 3em;
+  font-size: 5em;
   padding: 0;
+}
+
+.logo:hover {
+  color: rgb(124, 124, 124);
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    font-size: 3em;
+  }
 }
 
 .user-button {
   background: none;
   border: none;
   padding: 0;
-  font-size: 3em;
+  font-size: 5em;
+}
+
+.user-button:hover {
+  color: rgb(124, 124, 124);
+}
+
+@media screen and (max-width: 500px) {
+  .user-button {
+    font-size: 3em;
+  }
 }
 
 .menu {
@@ -44,24 +64,34 @@ nav {
 }
 
 .menu-button {
-  font-size: 3em;
+  font-size: 5em;
   padding: 0;
   background: none;
   border: none;
 }
 
+.menu-button:hover {
+  color: rgb(124, 124, 124);
+}
+@media screen and (max-width: 500px) {
+  .menu-button {
+    font-size: 3em;
+  }
+}
+
 .menu-container {
   right: 0;
+  text-align: center;
 }
 
 .drop-down-content {
   right: 0;
-  font-size: 2em;
+  font-size: 3em;
 }
 @media screen and (max-width: 500px) {
   .drop-down-content {
     right: 0;
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }
 
@@ -69,13 +99,11 @@ nav {
   border: none;
   background: none;
   text-transform: capitalize;
-  font-style: italic;
   font-size: 1.1em;
+  padding: 0.3em;
 }
-
 .topic-button:hover {
-  background: rgb(224, 221, 221);
-  border-radius: 4px;
+  text-decoration: underline;
 }
 
 .main-page {
@@ -111,9 +139,15 @@ nav {
   align-items: center;
 }
 
+.articles-list-title {
+  background: red;
+  font-size: 5em;
+  font-size: 1;
+}
+
 @media screen and (max-width: 500px) {
   .articles-list {
-    font-size: 0.7em;
+    font-size: 0.8em;
   }
 }
 
@@ -132,6 +166,18 @@ nav {
   }
 }
 
+.sort-buttons-container {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 500px) {
+  .sort-buttons-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .sort-button {
   font-size: 2em;
   margin: 0.2em;
@@ -141,13 +187,13 @@ nav {
 
 @media screen and (max-width: 500px) {
   .sort-button {
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }
 
 .post-article-button {
   background-color: #548c8f;
-  margin: 1em 1em 2em 1em;
+  margin: 1em 0em 2em 0em;
   border-radius: 8px;
   padding: 0.5em;
   font-size: 2em;
@@ -177,9 +223,6 @@ nav {
   text-decoration: underline;
 }
 
-.top-articles h3 {
-}
-
 .top-article-item {
   border: 1px solid black;
   border-radius: 4px;
@@ -195,7 +238,13 @@ nav {
 
 .articles-list h1 {
   text-transform: capitalize;
-  font-size: 2.5em;
+  font-size: 4em;
+}
+
+@media screen and (max-width: 500px) {
+  .articles-list h1 {
+    font-size: 3em;
+  }
 }
 
 .article-title-link {
@@ -234,11 +283,35 @@ nav {
 .article-container {
   margin: 1em 1em 1em 1em;
   width: 89%;
-  font-size: 0.8em;
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 500px) {
+  .article-container {
+    font-size: 1em;
+  }
+}
+.article-title {
+  font-size: 2em;
+}
+@media screen and (max-width: 500px) {
+  .article-title {
+    font-size: 1.5em;
+  }
+}
+
+.article-body {
+  font-size: 1.3em;
+}
+
+@media screen and (max-width: 500px) {
+  .article-body {
+    font-size: 1em;
+  }
 }
 
 .comments-container {
-  font-size: 0.8em;
+  font-size: 1em;
   border: 1px solid black;
   border-radius: 4px;
   margin-top: 1em;
@@ -251,29 +324,38 @@ nav {
   flex-direction: column;
   background: #548c8f;
   border-radius: 10px;
-  padding: 1em;
+  padding: 0.5em;
+  font-size: 1.3em;
 }
 .new-comment-form label {
-  text-align: left;
   font-style: italic;
-  font-size: 0.6rem;
+  font-size: 0.8em;
 }
 
 .new-comment-form button {
   margin: 1em 0em;
   border-radius: 4px;
   border: 1px solid black;
+  font-size: 1.2em;
+  background-color: whitesmoke;
 }
 .new-comment-form button:hover {
-  margin: 1em;
   border-radius: 4px;
-  background: whitesmoke;
 }
 
 .comment-input {
   height: 3rem;
   resize: none;
+  font-size: 1.2em;
+  padding: 0.5em;
 }
+
+@media screen and (max-width: 500px) {
+  .comment-input {
+    font-size: 1em;
+  }
+}
+
 .comment-input:focus {
   outline: none;
 }
@@ -293,14 +375,22 @@ nav {
 .delete-button {
   background: none;
   border: none;
+  font-size: 1.3em;
 }
 
 .user-page {
+  font-size: 1.8em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 1em;
+}
+
+@media screen and (max-width: 500px) {
+  .user-page {
+    font-size: 1em;
+  }
 }
 
 .avatar-container {
@@ -363,11 +453,21 @@ nav {
 @media screen and (max-width: 500px) {
   .new-article-section {
     font-size: 1em;
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+}
+
+@media screen and (max-width: 500px) {
+  .new-article-section {
+    font-size: 0.9em;
+  }
+}
+
+.new-article-section h2 {
+  font-size: 1.8em;
 }
 
 .new-article-form {

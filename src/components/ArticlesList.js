@@ -86,7 +86,7 @@ export default class Articleslist extends Component {
           {!this.props.topic ? (
             <h1>All Articles</h1>
           ) : (
-            <h1> {this.props.topic} Articles</h1>
+            <h1>{this.props.topic} Articles</h1>
           )}
           {this.props.topic ? (
             <Link to={`/articles/${this.props.topic}/newArticle`}>
@@ -96,7 +96,7 @@ export default class Articleslist extends Component {
             </Link>
           ) : null}
 
-          <div>
+          <div className={'sort-buttons-container'}>
             <button
               className={'sort-button'}
               onClick={() => {

@@ -38,6 +38,29 @@ export default class Article extends Component {
         });
       });
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.article_id !== this.props.article_id) {
+      const { article_id } = this.props;
+      api
+        .getArticleById(article_id)
+        .then((article) => {
+          this.setState({ article, isLoading: false });
+        })
+        .catch((err) => {
+          const {
+            response: { data },
+          } = err;
+          const {
+            response: { status },
+          } = err;
+          this.setState({
+            isError: true,
+            isLoading: false,
+            errorMessage: `${status} ${data.msg}`,
+          });
+        });
+    }
+  }
 
   showDeletedMessage = () => {
     this.setState({ isDeleted: true });
@@ -66,8 +89,8 @@ export default class Article extends Component {
       return (
         <div className={'article-container'}>
           <p className={'article-date'}> {date}</p>
-          <h2>{article.title}</h2>
-          <p>{article.body}</p>
+          <h2 className={'article-title'}>{article.title}</h2>
+          <p className={'article-body'}>{article.body}</p>
           <p>Author: {article.author}</p>
           {article.author === 'tickle122' ? (
             <DeleteArticle
