@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-
 import { dateFormatter } from '../utils';
 import { Link } from '@reach/router';
 

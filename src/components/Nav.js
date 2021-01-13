@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import * as api from '../api';
-// import DropdownMenu from './DropdownMenu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
