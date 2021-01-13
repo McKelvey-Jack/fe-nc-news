@@ -15,9 +15,13 @@ button:hover {
 }
 
 nav {
-  border-bottom: 1px solid black;
   display: flex;
   align-items: baseline;
+  width: 100%;
+}
+
+header {
+  border-bottom: 1px solid black;
 }
 
 .logo {
@@ -43,13 +47,30 @@ nav {
   color: rgb(124, 124, 124);
 }
 
+.menu-button {
+  font-size: 3em;
+  min-width: 60px;
+  background: none;
+  border: none;
+  margin-left: auto;
+  padding-left: 100px;
+}
+
+.menu-button:hover {
+  color: rgb(124, 124, 124);
+}
+@media screen and (max-width: 500px) {
+  .menu-button {
+    font-size: 3em;
+    padding: 0em;
+  }
+}
+
 .menu {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 100px;
-  margin-left: auto;
 }
 
 @media screen and (min-width: 500px) {
@@ -64,13 +85,6 @@ nav {
   }
 }
 
-.menu-button {
-  font-size: 3em;
-  min-width: 60px;
-  background: none;
-  border: none;
-}
-
 .menu-button:hover {
   color: rgb(124, 124, 124);
 }
@@ -82,17 +96,15 @@ nav {
 }
 
 .menu-container {
-  right: 0;
+  margin-top: 1em;
   text-align: center;
 }
 
 .drop-down-content {
-  right: 0;
   font-size: 2em;
 }
 @media screen and (max-width: 500px) {
   .drop-down-content {
-    right: 0;
     font-size: 1.2em;
   }
 }
@@ -168,6 +180,12 @@ nav {
   background-color: #bbd1e2;
 }
 
+@media screen and (max-width: 800px) {
+  .sort-button {
+    font-size: 1.2em;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .sort-button {
     font-size: 1em;
@@ -206,7 +224,7 @@ nav {
   background-color: #a1cdf1;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .top-articles {
     display: none;
   }

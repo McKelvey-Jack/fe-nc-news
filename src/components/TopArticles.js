@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as api from '../api';
-import Loading from './Loading';
 import { dateFormatter } from '../utils';
 import { Link } from '@reach/router';
 
@@ -18,9 +17,7 @@ export default class TopArticles extends Component {
   }
   render() {
     const date = dateFormatter(new Date());
-    if (this.state.isLoading) {
-      return <Loading />;
-    } else if (this.state.isError) {
+    if (this.state.isError) {
       <p>currently unable to load Top Articles</p>;
     } else {
       return (
