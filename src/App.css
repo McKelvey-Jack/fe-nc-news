@@ -109,6 +109,12 @@ header {
   }
 }
 
+@media screen and (max-width: 800px) {
+  .drop-down-content {
+    font-size: 1.2em;
+  }
+}
+
 .topic-button {
   border: none;
   background: none;
