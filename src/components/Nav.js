@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
   faUser,
-  faAngleDoubleUp,
+  faTimes,
   faBars,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -57,7 +57,7 @@ export default class Nav extends Component {
             {!this.state.showMenu ? (
               <FontAwesomeIcon icon={faBars} />
             ) : (
-              <FontAwesomeIcon icon={faAngleDoubleUp} />
+              <FontAwesomeIcon icon={faTimes} />
             )}
           </button>
         </nav>
