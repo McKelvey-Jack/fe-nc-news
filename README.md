@@ -1,3 +1,5 @@
+This project is no longer supported
+
 ### Hello and welome to the frontend repo of my nc-news project.
 
 To run this project locally on your machine you can clone the repo and use either Npm instal or Yarn install to install the dependencies, then you should be ready to rock!
@@ -10,4 +12,3 @@ You can view the backend code here https://github.com/McKelvey-Jack/be-NcNews
 
 Jack
 
-# This project is no longer supported
